@@ -1,0 +1,85 @@
+.login{
+    width: 100%;
+    height: 100%;
+    background-image: url('../../images/login-bg.png');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+
+    .logo-title{
+        height:70px; 
+        font-size:50px;
+        font-family:'PingFangSC-Semibold';
+        color:rgba(249,249,249,1);
+        line-height:70px;
+        text-align: center;
+        transform: translateY(90px);
+        span{
+            font-family:'PingFangSC-Thin';
+        }
+    }
+
+    &-con{
+        width:500px;
+        height:400px; 
+        position: absolute;
+        top: 180px;
+        left: 50%;
+        transform: translateX(-50%);
+        background:rgba(215,227,255,0.1);
+        box-shadow: 0px 12px 24px 0px rgba(0,0,0,0.25), 0px 4px 8px 0px rgba(0,0,0,0.12);
+        border-radius: 4px ; 
+
+        &-header{
+            font-size: 16px;
+            font-weight: 300;
+            text-align: center;
+            padding: 30px 0;
+        }
+        .form-con{
+            padding: 10px 0 0;
+        }
+
+        .loginForm{
+            width: 56%;
+            transform: translateX(40%)
+        }
+        .login-tip{
+            text-align: center;
+            color:rgba(255,255,255,1);
+            line-height:22px;
+            font-size:16px;
+            margin-bottom: 78px;
+        }
+        .verif-code-item{
+            position: relative;
+            .verif-code{
+                width: 65px;
+                height: 32px;
+                position: absolute;
+                right: 28px;
+                top: 1px;
+                z-index: 10;
+            }
+        }
+        
+        .login-config{
+            display: flex;
+            justify-content: space-between;
+            color: #fff;
+            margin-bottom: 15px;
+            .forgetpassword{
+                flex: 1;
+                text-align: right;
+                a{
+                    color: #fff;
+                }
+            }
+        }
+        .no-account{
+            color: #fff;
+            text-align: right;
+            margin-top: -15px;
+        }
+    }
+}

@@ -1,0 +1,10 @@
+.DS_Store
+src/images/.DS_Store
+src/.DS_Store
+node_modules
+.project
+.vscode
+.history
+src/config/env.js
+/dist
+src/config/env.js

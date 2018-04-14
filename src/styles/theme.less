@@ -1,0 +1,73 @@
+@import '~iview/src/styles/index.less';
+
+@primary-color: #3185FC;
+@btn-padding-small: 5px 10px;
+@table-thead-bg: #fff;
+
+.ivu-table-border td, .ivu-table-border th{
+    border-right: 0 none;
+}
+
+// 设置table左右表框
+.ivu-table-wrapper{
+    border: 0 none;
+    border-top: 1px solid #dddee1;
+}
+.ivu-table:after{
+    background-color: #fff;
+}
+
+.ivu-table th{
+    height: 50px;
+    color: #2A2D33;
+}
+
+.ivu-table-wrapper>.ivu-spin-fix{
+    border-right: 0 none;
+}
+
+// 设置左侧侧边栏边框
+.ivu-menu-vertical.ivu-menu-light:after{
+    width: 0;
+}
+
+//菜单栏
+.ivu-menu-vertical .ivu-menu-item, .ivu-menu-vertical .ivu-menu-submenu-title{
+    padding: 10px 24px;
+}
+//激活状态
+.ivu-menu-light.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu){
+    background-color: #F5F9FF;
+    // color: #8DBBFD;
+}
+
+//顶部元素样式设置
+.rootContent{
+    border:0 none;
+}
+
+.rootContent:hover{
+    box-shadow: none;
+    border: none;
+}
+
+//按钮
+.ivu-btn-primary {
+    color: #fff;
+}
+.ivu-btn{
+    border-radius: 2px;
+}
+
+.ivu-badge{
+    height: 14px;
+    margin-top: -5px;
+}
+
+//查询条件的input
+.searchInput {
+    .ivu-input-group-append, .ivu-input-group-prepend{
+        background-color: #fff;
+        padding: 0;
+    }
+}
