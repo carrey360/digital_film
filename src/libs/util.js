@@ -13,7 +13,7 @@ util.cookieKey = function(){
     return "token";
 }
 
-const ajaxUrl = env === 'development' ? 'http://10.6.26.136:8011' : env === 'test' ? '' : env === 'production' ? '' : '';
+const ajaxUrl = env === 'development' ? 'http://10.6.26.136:8082' : env === 'test' ? '' : env === 'production' ? '' : '';
 const devApi = "http://10.200.49.99";
 
 

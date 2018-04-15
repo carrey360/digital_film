@@ -1,37 +1,33 @@
-<style lang="less" scoped>
-    
-</style>
-
 <template>
     <Card class="rootContent">
         
         <div class="search">
             <Row span="24">
-                <Col span="4">
+                <Col span="3">
                     <Select clearable class="search_input" placeholder="所属影院">
                         <Option v-for="item in cinemaList" :value="item.id" :key="item.id">{{ item.text }}</Option>
                     </Select>
                 </Col>
                 
-                <Col span="4">
+                <Col span="3">
                     <Select clearable class="search_input" placeholder="播放类别">
                         <Option v-for="item in cinemaList" :value="item.id" :key="item.id">{{ item.text }}</Option>
                     </Select>
                 </Col>
 
-                <Col span="4">
+                <Col span="3">
                     <Input placeholder="出厂编号" class="searchInput search_input">
                         <Button slot="prepend" icon="ios-search"></Button>
                     </Input>
                 </Col>
                 
-                <Col span="4">
+                <Col span="3">
                     <Input placeholder="解码卡号" class="searchInput search_input">
                         <Button slot="prepend" icon="ios-search"></Button>
                     </Input>
                 </Col>
 
-                <Col span="4">
+                <Col span="3">
                     <Input placeholder="机器型号" class="searchInput search_input">
                         <Button slot="prepend" icon="ios-search"></Button>
                     </Input>
@@ -46,23 +42,23 @@
                 </Col> -->
             </Row>
             <Row style="margin-top:15px;">
-                <Col span="4">
+                <Col span="3">
                     <Select clearable class="search_input" placeholder="所属省">
                         <Option v-for="item in cinemaList" :value="item.id" :key="item.id">{{ item.text }}</Option>
                     </Select>
                 </Col>
-                <Col span="4">
+                <Col span="3">
                     <Select clearable class="search_input" placeholder="所属市辖区">
                         <Option v-for="item in cinemaList" :value="item.id" :key="item.id">{{ item.text }}</Option>
                     </Select>
                 </Col>
-                <Col span="4">
+                <Col span="3">
                     <Select clearable class="search_input" placeholder="所属区县">
                         <Option v-for="item in cinemaList" :value="item.id" :key="item.id">{{ item.text }}</Option>
                     </Select>
                 </Col>
 
-                <Col span="4">
+                <Col span="3">
                     <Select clearable class="search_input" placeholder="厂商">
                         <Option v-for="item in cinemaList" :value="item.id" :key="item.id">{{ item.text }}</Option>
                     </Select>
@@ -77,7 +73,7 @@
         </div>
 
         <Row class="table">
-            <Table class="myTable" border :columns="tableColumns" :data="tableData.list" :loading="tableLoading"></Table>
+            <Table class="myTable" border :columns="tableColumns" :data="tableData.data" :loading="tableLoading"></Table>
         </Row>
 
         <Row class="pagination">
@@ -90,12 +86,9 @@
 
 <script>
     import Util from '@/libs/util';
-    import moment from 'moment';
 
     const urlMap = {
-        list: '/b/order/list',
-        express: '/b/order/express/input',
-        verify:'/b/order/confirm'
+        list: '/player/distribution'
     }
 
     const tableColumns = (vm) => {
@@ -107,37 +100,38 @@
                 align: 'center'
             },{
                 title: '地区',
-                key: 'price'
+                key: 'player_area_name'
             },{
                 title: '播放器别名',
-                key: 'goods_num'
+                key: 'player_byname'
             },{
                 title: '出厂编号',
-                key: 'address'
+                type: 'html',
+                key: 'player_factory_number'
             },{
                 title: '解码卡号',
-                key: 'info_name'
+                key: 'player_decipher_card'
             },{
                 title: '设备型号',
-                key: 'info_phone'
+                key: 'player_factory_version'
             },{
                 title: '模块编号',
-                key: 'create_time'
+                key: 'player_messager_id'
             },{
                 title: '放映员',
-                key: 'status_desc'
+                key: 'player_cinemas_runner_name'
             },{
                 title: '放映方式',
-                key: 'express_type'
+                key: 'player_usage'
             },{
                 title: '使用情况',
                 key: 'express_type'
             },{
                 title: '院线',
-                key: 'express_type'
+                key: 'player_cinemas_name'
             },{
                 title: '厂商',
-                key: 'express_type'
+                key: 'player_factory_name'
             }
         ]
     };
@@ -149,13 +143,13 @@
                 page: 1,
                 tableLoading: false,
                 tableColumns: tableColumns(this),
-                tableData: {list: [], total: 0},
+                tableData: {data: [], total: 0},
                 cinemaList: [{id: 1, text: "望京兄弟影院"}]
                 
             }
         },
         mounted: function(){
-            // this.getTablesListData(1);
+            this.getTablesListData(1);
         },
         methods: {
             getTablesListData(page){
