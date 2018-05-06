@@ -11,35 +11,51 @@
 // 设置table左右表框
 .ivu-table-wrapper{
     border: 0 none;
-    border-top: 1px solid #dddee1;
+    border-top: 1px solid #e9eaec;
 }
 .ivu-table:after{
     background-color: #fff;
 }
 
 .ivu-table th{
-    height: 50px;
+    height: 48px;
     color: #2A2D33;
+    background-color: #F5F7F9;
 }
 
 .ivu-table-wrapper>.ivu-spin-fix{
     border-right: 0 none;
 }
 
+// .ivu-table-header table{
+//     border-left: 1px solid #e9eaec;
+//     border-right: 1px solid #e9eaec;
+// }
+
 // 设置左侧侧边栏边框
 .ivu-menu-vertical.ivu-menu-light:after{
     width: 0;
 }
 
+.ivu-menu-item, .ivu-menu{
+    font-size: 12px;
+}
+
 //菜单栏
 .ivu-menu-vertical .ivu-menu-item, .ivu-menu-vertical .ivu-menu-submenu-title{
     padding: 10px 24px;
+    .ivu-icon{
+        vertical-align: sub;
+    }
 }
 //激活状态
 .ivu-menu-light.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu){
     background-color: #F5F9FF;
     // color: #8DBBFD;
 }
+
+
+
 
 //顶部元素样式设置
 .rootContent{
@@ -69,5 +85,13 @@
     .ivu-input-group-append, .ivu-input-group-prepend{
         background-color: #fff;
         padding: 0;
+        border-radius: 2px;
+        vertical-align: bottom;
+        .ivu-btn-icon-only{
+            margin: -5px -9px;
+            .ivu-icon{
+                font-size: 20px;
+            }
+        } 
     }
 }
