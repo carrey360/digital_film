@@ -8,7 +8,7 @@
             <topLogoBar></topLogoBar>
         </div>
         <div class="sidebar-menu-con">  
-            <sidebar-menu :menuList="menuList" :iconSize="20"></sidebar-menu>
+            <sidebar-menu :menuList="menuList" :iconSize="18"></sidebar-menu>
         </div>
 
         <div class="single-page-con">

@@ -36,11 +36,11 @@
                         <Option v-for="item in cinemaList" :value="item.id" :key="item.id">{{ item.text }}</Option>
                     </Select>
                 </Col>
-                <Col span="4">
-                    <Button type="primary" icon="ios-search">查询</Button>
-                    <Button type="primary" icon="nuclear">清空条件</Button>
-                </Col>
 
+                <Col span="6" class="text_align_right">
+                    <Button type="primary">查询</Button>
+                    <Button type="primary">清空条件</Button>
+                </Col>
             </Row>
         </div>
 
@@ -84,6 +84,7 @@
                 key: 'player_online_status'
             },{
                 title: '最后通讯时间',
+                width: 180,
                 key: 'player_online_login_time'
             },{
                 title: '放映员',

@@ -19,9 +19,9 @@
                         <Button slot="prepend" icon="ios-search"></Button>
                     </Input>
                 </Col>
-                <Col span="4">
-                    <Button type="primary" icon="ios-search">查询</Button>
-                    <Button type="primary" icon="nuclear">清空条件</Button>
+                <Col span="12" class="text_align_right">
+                    <Button type="primary">查询</Button>
+                    <Button type="primary">清空条件</Button>
                 </Col>
 
             </Row>

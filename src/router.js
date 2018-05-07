@@ -40,14 +40,14 @@ export const appRouter = [
         name: 'home',
         icon: 'ios-home-outline',
         title: '首页',
-        redirect: '/home',
+        redirect: '/ad/list',
         component: Main,
         children: [
             { path: 'home', title: '首页', name: 'home_index', component: resolve => { require(['./views/home/home.vue'], resolve); } }
         ]
     },{
         path: '/',
-        icon: 'ios-monitor-outline',
+        icon: 'laptop',
         title: '设备总况',
         name: 'device',
         meta: {},

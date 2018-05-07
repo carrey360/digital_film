@@ -16,7 +16,7 @@
                         <Input v-model="form.password" placeholder="请输入密码"></Input>
                     </FormItem>
                     <FormItem class="verif-code-item">
-                        <Input v-model="form.password" placeholder="请输入验证码">
+                        <Input v-model="form.code" placeholder="请输入验证码">
                             <span slot="append" @click="verifRefresh">
                                 <Icon :size="18" type="refresh"></Icon>
                             </span>
@@ -55,7 +55,8 @@ export default {
         return {
             form: {
                 userName: '',
-                password: ''
+                password: '',
+                code: ""
             },
             rules: {
                 userName: [

@@ -32,16 +32,17 @@
                         <Button slot="prepend" icon="ios-search"></Button>
                     </Input>
                 </Col>
-
-                <!-- <Col span="2">
-                    <Button type="text">高级查询</Button>
+                <Col span="1">
+                    <Button type="text" @click="showMoreQuery">{{ moreQuery.text }}</Button>
                 </Col>
 
-                <Col span="2">
-                    <Button type="primary" icon="arrow-down-c">下载结果</Button>
-                </Col> -->
+                <Col span="8" class="text_align_right">
+                    <Button type="primary">查询</Button>
+                    <Button type="primary">清空条件</Button>
+                    <Button type="primary">下载结果</Button>
+                </Col>
             </Row>
-            <Row style="margin-top:15px;">
+            <Row style="margin-top:15px;" v-show="moreQuery.flag">
                 <Col span="3">
                     <Select clearable class="search_input" placeholder="所属省">
                         <Option v-for="item in cinemaList" :value="item.id" :key="item.id">{{ item.text }}</Option>
@@ -62,12 +63,6 @@
                     <Select clearable class="search_input" placeholder="厂商">
                         <Option v-for="item in cinemaList" :value="item.id" :key="item.id">{{ item.text }}</Option>
                     </Select>
-                </Col>
-
-                <Col span="8">
-                    <Button type="primary" icon="ios-search">查询</Button>
-                    <Button type="primary" icon="nuclear">清空条件</Button>
-                    <Button type="primary" icon="arrow-down-c">下载结果</Button>
                 </Col>
             </Row>
         </div>
@@ -100,37 +95,48 @@
                 align: 'center'
             },{
                 title: '地区',
+                width: 150,
                 key: 'player_area_name'
             },{
                 title: '播放器别名',
+                width: 150,
                 key: 'player_byname'
             },{
                 title: '出厂编号',
                 type: 'html',
+                width: 200,
                 key: 'player_factory_number'
             },{
                 title: '解码卡号',
+                width: 150,
                 key: 'player_decipher_card'
             },{
                 title: '设备型号',
+                width: 150,
                 key: 'player_factory_version'
             },{
                 title: '模块编号',
+                width: 100,
                 key: 'player_messager_id'
             },{
                 title: '放映员',
+                width: 100,
                 key: 'player_cinemas_runner_name'
             },{
                 title: '放映方式',
+                width: 100,
                 key: 'player_usage'
             },{
                 title: '使用情况',
+                width: 150,
                 key: 'express_type'
             },{
                 title: '院线',
+                width: 150,
                 key: 'player_cinemas_name'
             },{
                 title: '厂商',
+                width: 150,
                 key: 'player_factory_name'
             }
         ]
@@ -144,8 +150,11 @@
                 tableLoading: false,
                 tableColumns: tableColumns(this),
                 tableData: {data: [], total: 0},
-                cinemaList: [{id: 1, text: "望京兄弟影院"}]
-                
+                cinemaList: [{id: 1, text: "望京兄弟影院"}],
+                moreQuery: {
+                    flag: false,
+                    text: "高级筛选"
+                }
             }
         },
         mounted: function(){
@@ -166,6 +175,15 @@
             },
             pageChange(page){
                 this.getTablesListData(page);
+            },
+            showMoreQuery(){
+                if(this.moreQuery.flag){
+                    this.moreQuery.text = "高级筛选";
+                    this.moreQuery.flag = false;
+                }else{
+                    this.moreQuery.text = "收起高级筛选";
+                    this.moreQuery.flag = true;
+                }
             }
         }
     }

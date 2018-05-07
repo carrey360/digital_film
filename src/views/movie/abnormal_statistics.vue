@@ -24,9 +24,9 @@
                         <Button slot="prepend" icon="ios-search"></Button>
                     </Input>
                 </Col>
-                <Col span="4">
-                    <Button type="primary" icon="ios-search">查询</Button>
-                    <Button type="primary" icon="nuclear">清空条件</Button>
+                <Col span="9" class="text_align_right">
+                    <Button type="primary">查询</Button>
+                    <Button type="primary">清空条件</Button>
                 </Col>
 
             </Row>
@@ -60,36 +60,47 @@
                 align: 'center'
             },{
                 title: '地区',
+                width: 150,
                 key: 'player_area_name'
             },{
                 title: '院线',
+                width: 150,
                 key: 'movie_fid'
             },{
                 title: '设备别名',
+                width: 150,
                 key: 'movie_supply_name'
             },{
                 title: '解码卡号',
+                width: 200,
                 key: 'player_decipher_card'
             },{
                 title: '放映员',
+                width: 150,
                 key: 'player_cinemas_runner_name'
             },{
                 title: '影片编号',
+                width: 200,
                 key: 'player_cinemas_id'
             },{
                 title: '影片名称',
+                width: 150,
                 key: 'movie_name'
             },{
                 title: '影片类型',
+                width: 150,
                 key: 'movie_type'
             },{
                 title: '开始时间',
+                width: 180,
                 key: 'show_start_time'
             },{
                 title: '结束时间',
+                width: 180,
                 key: 'show_finish_time'
             },{
                 title: '异常原因',
+                width: 200,
                 key: 'show_check_state'
             }
         ]

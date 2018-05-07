@@ -15,9 +15,9 @@
                     <DatePicker type="date" placeholder="结束放映时间" class="search_input"></DatePicker>
                 </Col>
                 
-                <Col span="4">
-                    <Button type="primary" icon="ios-search">查询</Button>
-                    <Button type="primary" icon="nuclear">清空条件</Button>
+                <Col span="15" class="text_align_right">
+                    <Button type="primary">查询</Button>
+                    <Button type="primary">清空条件</Button>
                 </Col>
 
             </Row>
