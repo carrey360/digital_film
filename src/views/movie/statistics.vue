@@ -4,18 +4,16 @@
         <div class="search">
             <Row span="24">
                 <Col span="3">
-                    <Select clearable class="search_input" placeholder="播放类别">
+                    <Select clearable class="search_input" placeholder="播放供应商" v-model="query.movie_supply_id">
                         <Option v-for="item in cinemaList" :value="item.id" :key="item.id">{{ item.text }}</Option>
                     </Select>
                 </Col>
                 <Col span="3">
-                    <Select clearable class="search_input" placeholder="所属影院">
-                        <Option v-for="item in cinemaList" :value="item.id" :key="item.id">{{ item.text }}</Option>
-                    </Select>
+                    <Input placeholder="影片名称" class="searchInput search_input input_icon" v-model="query.movie_name"></Input>
                 </Col>
                 <Col span="18" class="text_align_right">
-                    <Button type="primary">查询</Button>
-                    <Button type="primary">清空条件</Button>
+                    <Button type="primary" @click="btnQuery">查询</Button>
+                    <Button type="primary" @click="resetQuery">清空条件</Button>
                 </Col>
 
             </Row>
@@ -74,8 +72,11 @@
                 tableLoading: false,
                 tableColumns: tableColumns(this),
                 tableData: {data: [], total: 0},
-                cinemaList: [{id: 1, text: "望京兄弟影院"}]
-                
+                cinemaList: [{id: 1, text: "望京兄弟影院"}],
+                query: {
+                    movie_supply_id: "",
+                    movie_name: ""
+                }
             }
         },
         mounted: function(){
@@ -87,6 +88,8 @@
                     page: page || this.page,
                     limit: this.limit
                 };
+                Object.assign(params, this.query);
+
                 Util.getData(urlMap.list, params).then((res) => {
                     if(res){
                         this.page = page;
@@ -96,6 +99,15 @@
             },
             pageChange(page){
                 this.getTablesListData(page);
+            },
+            btnQuery(){
+                this.getTablesListData(1);
+            },
+            resetQuery(){
+                this.query = {
+                    movie_supply_id: "",
+                    movie_name: ""
+                };
             }
         }
     }

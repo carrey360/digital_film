@@ -4,24 +4,20 @@
         <div class="search">
             <Row span="24">
                 <Col span="3">
-                    <DatePicker type="date" placeholder="开始时间" class="search_input"></DatePicker>
+                    <DatePicker type="date" placeholder="开始时间" class="search_input" v-model="query.start_time"></DatePicker>
                 </Col>
                 <Col span="3">
-                    <DatePicker type="date" placeholder="结束时间" class="search_input"></DatePicker>
+                    <DatePicker type="date" placeholder="结束时间" class="search_input" v-model="query.finish_time"></DatePicker>
                 </Col>
                 <Col span="3">
-                    <Input placeholder="广告项目" class="searchInput search_input">
-                        <Button slot="prepend" icon="ios-search"></Button>
-                    </Input>
+                    <Input placeholder="广告项目" class="searchInput search_input input_icon" v-model="query.ad_name"></Input>
                 </Col>
                 <Col span="3">
-                    <Input placeholder="广告提供方" class="searchInput search_input">
-                        <Button slot="prepend" icon="ios-search"></Button>
-                    </Input>
+                    <Input placeholder="广告提供方" class="searchInput search_input input_icon" v-model="query.advertiser_name"></Input>
                 </Col>
                 <Col span="12" class="text_align_right">
-                    <Button type="primary">查询</Button>
-                    <Button type="primary">清空条件</Button>
+                    <Button type="primary" @click="btnQuery">查询</Button>
+                    <Button type="primary" @click="resetQuery">清空条件</Button>
                 </Col>
 
             </Row>
@@ -86,8 +82,13 @@
                 tableLoading: false,
                 tableColumns: tableColumns(this),
                 tableData: {data: [], total: 0},
-                cinemaList: [{id: 1, text: "望京兄弟影院"}]
-                
+                cinemaList: [{id: 1, text: "望京兄弟影院"}],
+                query: {
+                    start_time: "",
+                    finish_time: "",
+                    ad_name: "",
+                    advertiser_name: ""
+                }
             }
         },
         mounted: function(){
@@ -95,73 +96,31 @@
         },
         methods: {
             getTablesListData(page){
-                this.tableData = {
-                    data: [{
-                        ad_duration:"90",
-                        ad_name:"哇哈哈",
-                        advertiser_name:"MIAO",
-                        advertiser_project_finish_time:"2018-03-31",
-                        advertiser_project_name:"功能饮料广告轮播",
-                        advertiser_project_start_time:"2018-03-01",
-                        finish_count:"少计划场次",
-                        plan_count:"少计划场次",
-                        show_type:"放映方式不合理，在放映明细显示即可"
-                    },{
-                        ad_duration:"90",
-                        ad_name:"哇哈哈",
-                        advertiser_name:"MIAO",
-                        advertiser_project_finish_time:"2018-03-31",
-                        advertiser_project_name:"功能饮料广告轮播",
-                        advertiser_project_start_time:"2018-03-01",
-                        finish_count:"少计划场次",
-                        plan_count:"少计划场次",
-                        show_type:"放映方式不合理，在放映明细显示即可"
-                    },{
-                        ad_duration:"90",
-                        ad_name:"哇哈哈",
-                        advertiser_name:"MIAO",
-                        advertiser_project_finish_time:"2018-03-31",
-                        advertiser_project_name:"功能饮料广告轮播",
-                        advertiser_project_start_time:"2018-03-01",
-                        finish_count:"少计划场次",
-                        plan_count:"少计划场次",
-                        show_type:"放映方式不合理，在放映明细显示即可"
-                    },{
-                        ad_duration:"90",
-                        ad_name:"哇哈哈",
-                        advertiser_name:"MIAO",
-                        advertiser_project_finish_time:"2018-03-31",
-                        advertiser_project_name:"功能饮料广告轮播",
-                        advertiser_project_start_time:"2018-03-01",
-                        finish_count:"少计划场次",
-                        plan_count:"少计划场次",
-                        show_type:"放映方式不合理，在放映明细显示即可"
-                    },{
-                        ad_duration:"90",
-                        ad_name:"哇哈哈",
-                        advertiser_name:"MIAO",
-                        advertiser_project_finish_time:"2018-03-31",
-                        advertiser_project_name:"功能饮料广告轮播",
-                        advertiser_project_start_time:"2018-03-01",
-                        finish_count:"少计划场次",
-                        plan_count:"少计划场次",
-                        show_type:"放映方式不合理，在放映明细显示即可"
-                    }],
-                    total:5
-                }
-                // let params = {
-                //     page: page || this.page,
-                //     limit: this.limit
-                // };
-                // Util.getData(urlMap.list, params).then((res) => {
-                //     if(res){
-                //         this.page = page;
-                //         this.tableData = res;
-                //     }
-                // });
+                let params = {
+                    page: page || this.page,
+                    limit: this.limit
+                };
+                Object.assign(params, this.query);
+                Util.getData(urlMap.list, params).then((res) => {
+                    if(res){
+                        this.page = page;
+                        this.tableData = res;
+                    }
+                });
             },
             pageChange(page){
                 this.getTablesListData(page);
+            },
+            btnQuery(){
+                this.getTablesListData(1);
+            },
+            resetQuery(){
+                this.query = {
+                    start_time: "",
+                    finish_time: "",
+                    ad_name: "",
+                    advertiser_name: ""
+                };
             }
         }
     }

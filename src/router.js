@@ -38,7 +38,8 @@ export const appRouter = [
     {
         path: '/',
         name: 'home',
-        icon: 'ios-home-outline',
+        // icon: 'ios-home-outline',
+        icon: "home",
         title: '首页',
         redirect: '/ad/list',
         component: Main,
@@ -47,7 +48,8 @@ export const appRouter = [
         ]
     },{
         path: '/',
-        icon: 'laptop',
+        //icon: 'laptop',
+        icon: "device",
         title: '设备总况',
         name: 'device',
         meta: {},
@@ -59,7 +61,8 @@ export const appRouter = [
         ]
     },{
         path: '/',
-        icon: 'ios-list-outline',
+        //icon: 'ios-list-outline',
+        icon: "movie",
         title: '放映信息',
         name: 'movie',
         meta: {},
@@ -73,7 +76,8 @@ export const appRouter = [
         ]
     },{
         path: '/',
-        icon: 'ios-analytics-outline',
+        //icon: 'ios-analytics-outline',
+        icon: "ad",
         title: '广告统计',
         name: 'ad',
         meta: {},

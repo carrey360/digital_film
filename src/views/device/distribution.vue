@@ -4,63 +4,42 @@
         <div class="search">
             <Row span="24">
                 <Col span="3">
-                    <Select clearable class="search_input" placeholder="所属影院">
+                    <Select clearable class="search_input" placeholder="所属影院" v-model="query.player_cinemas_id">
                         <Option v-for="item in cinemaList" :value="item.id" :key="item.id">{{ item.text }}</Option>
                     </Select>
                 </Col>
                 
                 <Col span="3">
-                    <Select clearable class="search_input" placeholder="播放类别">
-                        <Option v-for="item in cinemaList" :value="item.id" :key="item.id">{{ item.text }}</Option>
-                    </Select>
+                    <Input placeholder="设备别名" class="searchInput search_input input_icon" v-model="query.player_byname"></Input>
                 </Col>
 
                 <Col span="3">
-                    <Input placeholder="出厂编号" class="searchInput search_input">
-                        <Button slot="prepend" icon="ios-search"></Button>
-                    </Input>
+                    <Input placeholder="解码卡号" class="searchInput search_input input_icon" v-model="query.player_decipher_card"></Input>
                 </Col>
                 
                 <Col span="3">
-                    <Input placeholder="解码卡号" class="searchInput search_input">
-                        <Button slot="prepend" icon="ios-search"></Button>
-                    </Input>
+                    <Input placeholder="机器型号" class="searchInput search_input input_icon" v-model="query.player_factory_version"></Input>
                 </Col>
 
-                <Col span="3">
-                    <Input placeholder="机器型号" class="searchInput search_input">
-                        <Button slot="prepend" icon="ios-search"></Button>
-                    </Input>
-                </Col>
                 <Col span="1">
                     <Button type="text" @click="showMoreQuery">{{ moreQuery.text }}</Button>
                 </Col>
 
-                <Col span="8" class="text_align_right">
-                    <Button type="primary">查询</Button>
-                    <Button type="primary">清空条件</Button>
+                <Col span="11" class="text_align_right">
+                    <Button type="primary" @click="btnQuery">查询</Button>
+                    <Button type="primary" @click="resetQuery">清空条件</Button>
                     <Button type="primary">下载结果</Button>
                 </Col>
             </Row>
             <Row style="margin-top:15px;" v-show="moreQuery.flag">
                 <Col span="3">
-                    <Select clearable class="search_input" placeholder="所属省">
-                        <Option v-for="item in cinemaList" :value="item.id" :key="item.id">{{ item.text }}</Option>
-                    </Select>
-                </Col>
-                <Col span="3">
-                    <Select clearable class="search_input" placeholder="所属市辖区">
-                        <Option v-for="item in cinemaList" :value="item.id" :key="item.id">{{ item.text }}</Option>
-                    </Select>
-                </Col>
-                <Col span="3">
-                    <Select clearable class="search_input" placeholder="所属区县">
+                    <Select clearable class="search_input" placeholder="所属地区" v-model="query.player_area_id">
                         <Option v-for="item in cinemaList" :value="item.id" :key="item.id">{{ item.text }}</Option>
                     </Select>
                 </Col>
 
                 <Col span="3">
-                    <Select clearable class="search_input" placeholder="厂商">
+                    <Select clearable class="search_input" placeholder="厂商" v-model="query.player_factory_id">
                         <Option v-for="item in cinemaList" :value="item.id" :key="item.id">{{ item.text }}</Option>
                     </Select>
                 </Col>
@@ -154,6 +133,13 @@
                 moreQuery: {
                     flag: false,
                     text: "高级筛选"
+                },
+                query: {
+                    player_cinemas_id: "",
+                    player_decipher_card: "",
+                    player_factory_version: "",
+                    player_area_id: "",
+                    player_factory_id: ""
                 }
             }
         },
@@ -166,6 +152,8 @@
                     page: page || this.page,
                     limit: this.limit
                 };
+                Object.assign(params, this.query);
+
                 Util.getData(urlMap.list, params).then((res) => {
                     if(res){
                         this.page = page;
@@ -181,9 +169,21 @@
                     this.moreQuery.text = "高级筛选";
                     this.moreQuery.flag = false;
                 }else{
-                    this.moreQuery.text = "收起高级筛选";
+                    this.moreQuery.text = "收起高级";
                     this.moreQuery.flag = true;
                 }
+            },
+            btnQuery(){
+                this.getTablesListData(1);
+            },
+            resetQuery(){
+                this.query = {
+                    player_cinemas_id: "",
+                    player_decipher_card: "",
+                    player_factory_version: "",
+                    player_area_id: "",
+                    player_factory_id: ""
+                };
             }
         }
     }

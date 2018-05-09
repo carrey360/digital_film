@@ -7,7 +7,7 @@ axios.interceptors.request.use(
     config => {
         // let token = Cookies.get("serviceToken");
 
-        let token = "S9NWSk4NXp3DdjZYHuf4xHmMsXUAFTRXyry9BXHhqZr2mdY7KgL9k1OvSP2YFMHvn1nrXjp9wQCYx0qdlxl4dRZ7kS5Mgb6YSbvj/S9ZaaYs0D3sgMT5nmPAu0I3AcNR4mcJqUhctnpxLfo0URtt4yDWm1YMNVeflt6For7vTdyvwt3GVH1NS/o9JvnvueKmj10Gl0RdhNus7rn799b7BXJfux60o1Xa4sTaf33ggtF+T4nP4YQEWObHgqQLoab79jBghFmVk6U0HZgZqiZ272j79JJn2YPoDKKQ1UlqqHIEAw1mAHSRvV3Qvmv1jzIrCHVhs4gAMt/4MIqH+MFZ+gZsUzKCsA9gazGa3t3y7eKZyFHKacT1M+oPdNI56//rbRLMfmEAld4eAvYHsWh/PoOYYKNBGRm0UXLaSG8ZToPu05v+PCG61UMx9rMCjqC4uISHo9zAtcPmu4ySlG7O0CCNJpVNBw4gZnk/6e+UNhK4Hq7JdWKvSrr21Ih5XEWRJq3JsNAHKhhZJVzAz+DNHma4iUEXobl+Ee/2+/59pjd6vqRbxMjSx7LK2nSY2x6+sSrWwNF0GWVnb3YZiXQwcXnP0v1TUNdddg4y4XNFin+x4Y3imQIBjgkngfgfrVcaPgcrmcCRPWBQePnpPjeqiFWtYL/EEdPRIitFjXTZNbo=";
+        let token = "";
 
         if (token) {
             switch (config.method) {

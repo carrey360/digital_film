@@ -1,14 +1,40 @@
+<style lang="less" scoped>
+    .mySelf_icon{
+        width: 18px;
+        height: 18px;
+        background: url(../../images/home.svg) no-repeat 0 0;
+        display: inline-block;
+        background-size: contain;
+        vertical-align: bottom;
+        margin-right: 4px;
+        &.home{
+            background-image: url(../../images/home.svg); 
+        }
+        &.device{
+            background-image: url(../../images/device.svg); 
+        }
+        &.movie{
+            background-image: url(../../images/movie.svg); 
+        }
+        &.ad{
+            background-image: url(../../images/ad.svg); 
+        }
+    }
+</style>
+
 <template>
     <Menu ref="sideMenu" :active-name="currentPageName" :open-names="openedSubmenuArr" :theme="menuTheme" width="auto" @on-select="changeMenu" accordion>
         <template v-for="item in menuList">
             <MenuItem v-if="item.children.length<=1" :name="item.children[0].name" :key="item.path">
-                <Icon :type="item.icon" :size="iconSize" :key="item.path"></Icon>
+                <!-- <Icon :type="item.icon" :size="iconSize" :key="item.path"></Icon> -->
+                <i :class="['mySelf_icon',  item.icon]"></i>
                 <span class="layout-text" :key="item.path">{{ item.title }}</span>
             </MenuItem>
 
             <Submenu v-if="item.children.length>1" :name="item.name" :key="item.path">
                 <template slot="title">
-                    <Icon :type="item.icon" :size="iconSize"></Icon>
+                    <!-- <Icon :type="item.icon" :size="iconSize"></Icon> -->
+                    <i :class="['mySelf_icon',  item.icon]"></i>
                     <span class="layout-text">{{ item.title }}</span>
                 </template>
                 <template v-for="child in item.children">

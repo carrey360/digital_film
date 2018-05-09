@@ -4,24 +4,30 @@
         <div class="search">
             <Row span="24">
                 <Col span="3">
-                    <DatePicker type="date" placeholder="开始时间" class="search_input"></DatePicker>
+                    <DatePicker type="date" placeholder="开始时间" class="search_input" v-model="query.start_time"></DatePicker>
                 </Col>
                 <Col span="3">
-                    <DatePicker type="date" placeholder="结束时间" class="search_input"></DatePicker>
+                    <DatePicker type="date" placeholder="结束时间" class="search_input" v-model="query.finish_time"></DatePicker>
                 </Col>
                 <Col span="3">
-                    <Input placeholder="广告项目" class="searchInput search_input">
-                        <Button slot="prepend" icon="ios-search"></Button>
-                    </Input>
+                    <Input placeholder="设备别名" class="searchInput search_input input_icon" v-model="query.player_byname"></Input>
                 </Col>
                 <Col span="3">
-                    <Input placeholder="广告提供方" class="searchInput search_input">
-                        <Button slot="prepend" icon="ios-search"></Button>
-                    </Input>
+                    <Input placeholder="解码卡号" class="searchInput search_input input_icon" v-model="query.player_decipher_card"></Input>
                 </Col>
-                <Col span="12" class="text_align_right">
-                    <Button type="primary">查询</Button>
-                    <Button type="primary">清空条件</Button>
+                <Col span="3">
+                    <Input placeholder="广告项目" class="searchInput search_input input_icon" v-model="query.advertiser_project_name"></Input>
+                </Col>
+                <Col span="3">
+                    <Select clearable class="search_input" placeholder="放映方式" v-model="query.show_type">
+                        <Option value="1">在线</Option>
+                        <Option value="1">离线</Option>
+                    </Select>
+                </Col>
+
+                <Col span="6" class="text_align_right">
+                    <Button type="primary" @click="btnQuery">查询</Button>
+                    <Button type="primary" @click="resetQuery">清空条件</Button>
                 </Col>
 
             </Row>
@@ -118,8 +124,15 @@
                 tableLoading: false,
                 tableColumns: tableColumns(this),
                 tableData: {data: [], total: 0},
-                cinemaList: [{id: 1, text: "望京兄弟影院"}]
-                
+                cinemaList: [{id: 1, text: "望京兄弟影院"}],
+                query: {
+                    start_time: "",
+                    finish_time: "",
+                    player_byname: "",
+                    player_decipher_card: "",
+                    advertiser_project_name: "",
+                    show_type: ""
+                }
             }
         },
         mounted: function(){
@@ -131,6 +144,8 @@
                     page: page || this.page,
                     limit: this.limit
                 };
+                Object.assign(params, this.query);
+
                 Util.getData(urlMap.list, params).then((res) => {
                     if(res){
                         this.page = page;
@@ -140,6 +155,19 @@
             },
             pageChange(page){
                 this.getTablesListData(page);
+            },
+            btnQuery(){
+                this.getTablesListData(1);
+            },
+            resetQuery(){
+                this.query = {
+                    start_time: "",
+                    finish_time: "",
+                    player_byname: "",
+                    player_decipher_card: "",
+                    advertiser_project_name: "",
+                    show_type: ""
+                };
             }
         }
     }

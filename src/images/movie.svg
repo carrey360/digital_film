@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="17px" height="15px" viewBox="0 0 17 15" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>放映信息ICON</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="侧导航/放映信息/场次对比" transform="translate(-23.000000, -89.000000)" stroke="#2A2D33">
+            <g id="放映信息ICON">
+                <g transform="translate(23.000000, 89.000000)">
+                    <path d="M4.25,4.5 L5.75,4.5" id="Line-5" stroke-linecap="round"></path>
+                    <path d="M4.25,7.5 L5.75,7.5" id="Line-5-Copy-3" stroke-linecap="round"></path>
+                    <path d="M4.25,10.5 L5.75,10.5" id="Line-5-Copy-5" stroke-linecap="round"></path>
+                    <path d="M7.875,4.5 L13.125,4.5" id="Line-5-Copy-2" stroke-linecap="round"></path>
+                    <path d="M7.875,7.5 L13.125,7.5" id="Line-5-Copy-4" stroke-linecap="round"></path>
+                    <path d="M7.875,10.5 L13.125,10.5" id="Line-5-Copy-6" stroke-linecap="round"></path>
+                    <rect id="Rectangle-10" x="0.5" y="0.5" width="16" height="14" rx="2"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

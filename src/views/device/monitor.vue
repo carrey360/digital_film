@@ -4,42 +4,30 @@
         <div class="search">
             <Row span="24">
                 <Col span="3">
-                    <Select clearable class="search_input" placeholder="播放类别">
+                    <Select clearable class="search_input" placeholder="播放类别" v-model="query.player_byid">
                         <Option v-for="item in cinemaList" :value="item.id" :key="item.id">{{ item.text }}</Option>
                     </Select>
                 </Col>
                
                 <Col span="3">
-                    <Input placeholder="解码卡号" class="searchInput search_input">
-                        <Button slot="prepend" icon="ios-search"></Button>
-                    </Input>
+                    <Input placeholder="解码卡号" class="searchInput search_input input_icon" v-model="query.player_decipher_card"></Input>
                 </Col>
 
                 <Col span="3">
-                    <Select clearable class="search_input" placeholder="所属省">
-                        <Option v-for="item in cinemaList" :value="item.id" :key="item.id">{{ item.text }}</Option>
-                    </Select>
-                </Col>
-                <Col span="3">
-                    <Select clearable class="search_input" placeholder="所属市辖区">
-                        <Option v-for="item in cinemaList" :value="item.id" :key="item.id">{{ item.text }}</Option>
-                    </Select>
-                </Col>
-                <Col span="3">
-                    <Select clearable class="search_input" placeholder="所属区县">
+                    <Select clearable class="search_input" placeholder="所属地区" v-model="query.player_area_id">
                         <Option v-for="item in cinemaList" :value="item.id" :key="item.id">{{ item.text }}</Option>
                     </Select>
                 </Col>
 
                 <Col span="3">
-                    <Select clearable class="search_input" placeholder="所属影院">
+                    <Select clearable class="search_input" placeholder="所属影院" v-model="query.player_cinemas_id">
                         <Option v-for="item in cinemaList" :value="item.id" :key="item.id">{{ item.text }}</Option>
                     </Select>
                 </Col>
 
-                <Col span="6" class="text_align_right">
-                    <Button type="primary">查询</Button>
-                    <Button type="primary">清空条件</Button>
+                <Col span="12" class="text_align_right">
+                    <Button type="primary" @click="btnQuery">查询</Button>
+                    <Button type="primary" @click="resetQuery">清空条件</Button>
                 </Col>
             </Row>
         </div>
@@ -104,8 +92,13 @@
                 tableLoading: false,
                 tableColumns: tableColumns(this),
                 tableData: {data: [], total: 0},
-                cinemaList: [{id: 1, text: "望京兄弟影院"}]
-                
+                cinemaList: [{id: 1, text: "望京兄弟影院"}],
+                query: {
+                    player_byid: "",
+                    player_cinemas_id: "",
+                    player_decipher_card: "",
+                    player_area_id: ""
+                }
             }
         },
         mounted: function(){
@@ -117,6 +110,8 @@
                     page: page || this.page,
                     limit: this.limit
                 };
+                Object.assign(params, this.query);
+
                 Util.getData(urlMap.list, params).then((res) => {
                     if(res){
                         this.page = page;
@@ -126,6 +121,17 @@
             },
             pageChange(page){
                 this.getTablesListData(page);
+            },
+            btnQuery(){
+                this.getTablesListData(1);
+            },
+            resetQuery(){
+                this.query = {
+                    player_byid: "",
+                    player_cinemas_id: "",
+                    player_decipher_card: "",
+                    player_area_id: ""
+                };
             }
         }
     }
