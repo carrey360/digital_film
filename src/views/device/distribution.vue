@@ -28,7 +28,7 @@
                 <Col span="11" class="text_align_right">
                     <Button type="primary" @click="btnQuery">查询</Button>
                     <Button type="primary" @click="resetQuery">清空条件</Button>
-                    <Button type="primary">下载结果</Button>
+                    <!-- <Button type="primary">下载结果</Button> -->
                 </Col>
             </Row>
             <Row style="margin-top:15px;" v-show="moreQuery.flag">
@@ -40,7 +40,7 @@
 
                 <Col span="3">
                     <Select clearable class="search_input" placeholder="厂商" v-model="query.player_factory_id">
-                        <Option v-for="item in cinemaList" :value="item.id" :key="item.id">{{ item.text }}</Option>
+                        <Option v-for="item in factorList" :value="item.id" :key="item.id">{{ item.text }}</Option>
                     </Select>
                 </Col>
             </Row>
@@ -129,7 +129,8 @@
                 tableLoading: false,
                 tableColumns: tableColumns(this),
                 tableData: {data: [], total: 0},
-                cinemaList: [{id: 1, text: "望京兄弟影院"}],
+                cinemaList: Util.getCinemasList(),
+                factorList: Util.getFactoryList(),
                 moreQuery: {
                     flag: false,
                     text: "高级筛选"

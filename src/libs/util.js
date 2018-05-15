@@ -164,4 +164,35 @@ util.formatMoney = (value) => {
     return parseFloat(value/100).toFixed(2);
 }
 
+//影院
+util.getCinemasList = () => {
+    return [
+        {id: 123123, text: "SJDF"},
+        {id: 123124, text: "SJDFG"}
+    ];
+};
+
+//厂商
+util.getFactoryList = () => {
+    return [
+        {id: 112233, text: "五科通力"},
+        {id: 112234, text: "六科通力"}
+    ];
+}
+
+//影片类型
+util.getMovieTypeList = () => {
+    return [
+        {id: '公益电影', text: "公益电影"}
+    ];
+}
+
+//影片类型
+util.addressList = () => {
+    return [
+        {id: '11', text: "北京"},
+        {id: '22', text: "天津"}
+    ];
+}
+
 export default util;

@@ -60,9 +60,11 @@
                 key: 'ad_duration'
             },{
                 title: '项目开始时间',
+                width: 180,
                 key: 'advertiser_project_start_time'
             },{
                 title: '项目结束时间',
+                width: 180,
                 key: 'advertiser_project_finish_time'
             },{
                 title: '计划场次',

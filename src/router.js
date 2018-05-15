@@ -11,6 +11,18 @@ export const page404 = {
 
 export const commonRouter = [
     {
+        path: '/',
+        name: 'home',
+        // icon: 'ios-home-outline',
+        icon: "home",
+        title: '首页',
+        redirect: '/device/distribution',
+        component: Main,
+        children: [
+            { path: 'home', title: '首页', name: 'home_index', meta: {hide : true}, component: resolve => { require(['./views/home/home.vue'], resolve); } }
+        ]
+    },
+    {
         path: '/login',
         name: 'login',
         meta: {
@@ -35,18 +47,8 @@ export const commonRouter = [
 ];
 
 export const appRouter = [
+    
     {
-        path: '/',
-        name: 'home',
-        // icon: 'ios-home-outline',
-        icon: "home",
-        title: '首页',
-        redirect: '/ad/list',
-        component: Main,
-        children: [
-            { path: 'home', title: '首页', name: 'home_index', component: resolve => { require(['./views/home/home.vue'], resolve); } }
-        ]
-    },{
         path: '/',
         //icon: 'laptop',
         icon: "device",

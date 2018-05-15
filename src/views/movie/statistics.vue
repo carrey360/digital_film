@@ -5,11 +5,11 @@
             <Row span="24">
                 <Col span="3">
                     <Select clearable class="search_input" placeholder="播放供应商" v-model="query.movie_supply_id">
-                        <Option v-for="item in cinemaList" :value="item.id" :key="item.id">{{ item.text }}</Option>
+                        <Option v-for="item in factoryList" :value="item.id" :key="item.id">{{ item.text }}</Option>
                     </Select>
                 </Col>
                 <Col span="3">
-                    <Input placeholder="影片名称" class="searchInput search_input input_icon" v-model="query.movie_name"></Input>
+                    <Input placeholder="影片名称" class="searchInput search_input input_icon" v-model="query.cinemas_id"></Input>
                 </Col>
                 <Col span="18" class="text_align_right">
                     <Button type="primary" @click="btnQuery">查询</Button>
@@ -72,10 +72,10 @@
                 tableLoading: false,
                 tableColumns: tableColumns(this),
                 tableData: {data: [], total: 0},
-                cinemaList: [{id: 1, text: "望京兄弟影院"}],
+                factoryList: Util.getFactoryList(),
                 query: {
                     movie_supply_id: "",
-                    movie_name: ""
+                    cinemas_id: ""
                 }
             }
         },

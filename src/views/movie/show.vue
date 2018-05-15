@@ -16,7 +16,7 @@
                     <DatePicker type="date" placeholder="结束放映时间" class="search_input" v-model="query.show_finish_time"></DatePicker>
                 </Col>
                 <Col span="3">
-                    <Select clearable class="search_input" placeholder="所属影院" v-model="query.player_cinemas_name">
+                    <Select clearable class="search_input" placeholder="所属影院" v-model="query.player_cinemas_id">
                         <Option v-for="item in cinemaList" :value="item.id" :key="item.id">{{ item.text }}</Option>
                     </Select>
                 </Col>
@@ -34,7 +34,7 @@
             <Row span="24" style="margin-top:15px;" v-show="moreQuery.flag">
                 <Col span="3">
                     <Select clearable class="search_input" placeholder="影片类型" v-model="query.movie_type">
-                        <Option v-for="item in cinemaList" :value="item.id" :key="item.id">{{ item.text }}</Option>
+                        <Option v-for="item in movieTypeList" :value="item.id" :key="item.id">{{ item.text }}</Option>
                     </Select>
                 </Col>
                 <Col span="3">
@@ -146,7 +146,8 @@
                 tableLoading: false,
                 tableColumns: tableColumns(this),
                 tableData: {data: [], total: 0},
-                cinemaList: [{id: 1, text: "望京兄弟影院"}],
+                cinemaList: Util.getCinemasList(),
+                movieTypeList: Util.getMovieTypeList(),
                 moreQuery: {
                     flag: false,
                     text: "高级筛选"
@@ -156,7 +157,7 @@
                     movie_name: "",
                     show_start_time: "",
                     show_finish_time: "",
-                    player_cinemas_name: "",
+                    player_cinemas_id: "",
                     movie_type: "",
                     player_area_id: "",
                     player_cinemas_runner_name: ""

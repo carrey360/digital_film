@@ -10,7 +10,7 @@
                 </Col>
                 <Col span="3">
                     <Select clearable class="search_input" placeholder="类型" v-model="query.movie_type">
-                        <Option v-for="item in cinemaList" :value="item.id" :key="item.id">{{ item.text }}</Option>
+                        <Option v-for="item in movieTypeList" :value="item.id" :key="item.id">{{ item.text }}</Option>
                     </Select>
                 </Col>
                 <Col span="3">
@@ -34,7 +34,7 @@
             <Row span="24" style="margin-top:15px;" v-show="moreQuery.flag">
                 <Col span="3">
                     <Select clearable class="search_input" placeholder="所属区县" v-model="query.player_area_id">
-                        <Option v-for="item in cinemaList" :value="item.id" :key="item.id">{{ item.text }}</Option>
+                        <Option v-for="item in addressList" :value="item.id" :key="item.id">{{ item.text }}</Option>
                     </Select>
                 </Col>
                 <Col span="3">
@@ -128,7 +128,9 @@
                 tableLoading: false,
                 tableColumns: tableColumns(this),
                 tableData: {data: [], total: 0},
-                cinemaList: [{id: 1, text: "望京兄弟影院"}],
+                cinemaList: Util.getCinemasList(),
+                movieTypeList: Util.getMovieTypeList(),
+                addressList: Util.addressList(),
                 moreQuery: {
                     flag: false,
                     text: "高级筛选"

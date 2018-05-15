@@ -4,10 +4,10 @@
         <div class="search">
             <Row span="24">
                 <Col span="3">
-                    <DatePicker type="date" placeholder="开始时间" class="search_input" v-model="query.start_time"></DatePicker>
+                    <DatePicker type="date" placeholder="开始时间" class="search_input" v-model="query.show_start_time"></DatePicker>
                 </Col>
                 <Col span="3">
-                    <DatePicker type="date" placeholder="结束时间" class="search_input" v-model="query.finish_time"></DatePicker>
+                    <DatePicker type="date" placeholder="结束时间" class="search_input" v-model="query.show_finish_time"></DatePicker>
                 </Col>
                 <Col span="3">
                     <Input placeholder="设备别名" class="searchInput search_input input_icon" v-model="query.player_byname"></Input>
@@ -20,8 +20,7 @@
                 </Col>
                 <Col span="3">
                     <Select clearable class="search_input" placeholder="放映方式" v-model="query.show_type">
-                        <Option value="1">在线</Option>
-                        <Option value="1">离线</Option>
+                        <Option value="流动">流动</Option>
                     </Select>
                 </Col>
 
@@ -104,12 +103,12 @@
                 ellipsis: true,
             },{
                 title: '开始时间',
-                key: 'advertiser_project_start_time',
+                key: 'show_start_time',
                 width: 180,
                 ellipsis: true,
             },{
                 title: '结束时间',
-                key: 'advertiser_project_finish_time',
+                key: 'show_finish_time',
                 width: 180,
                 ellipsis: true,
             }
