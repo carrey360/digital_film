@@ -4,7 +4,7 @@
 
 <template>
     <div>
-        首页
+        首页 
     </div>
 </template>
 
